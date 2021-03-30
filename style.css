@@ -1,20 +1,31 @@
 .app {
   display: flex;
-  height: 500px;
+  height: 98vh;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: silver;
 }
 
 .headings {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  margin-top: -60px;
 }
 
 .brush-selection {
   height: 70px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .paint {
-  height: 250px;
+  height: 375px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .palette {
@@ -51,21 +62,21 @@
 }
 
 .color-1 {
-
+  background-color: lightblue;
 }
 
 .color-2 {
-
+  background-color: lightgreen;
 }
 
 .color-3 {
-
+  background-color: lightcoral;
 }
 
 .color-4 {
-
+  background-color: black;
 }
 
 .color-5 {
-
+  background-color: white;
 }
