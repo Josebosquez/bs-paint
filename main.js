@@ -17,7 +17,7 @@
  */
 const gridWidth = 10;
 let count = 0;
-while (count <= gridWidth * gridWidth) {
+while (count < gridWidth * gridWidth) {
   const canvas = document.querySelector('.canvas');
   const div = document.createElement('div');
   div.className = 'square color-5';
@@ -45,15 +45,16 @@ while (count <= gridWidth * gridWidth) {
 /***********
  * QUERIES *
 ***********/
-
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
-
-
+const paletteColors = document.querySelectorAll(".palette-color");
+const currentBrushColor = document.querySelector(".current-brush");
+const allSquares = document.querySelectorAll(".square");
+const canvas = document.querySelectorAll('.canvas');
 
 /****************************
  * EVENT LISTENER FUNCTIONS *
-****************************/
+ ****************************/
 
 // Now add some functions to handle clicking one particular square
 // and clicking one particular palette color. You can leave them
@@ -61,13 +62,35 @@ while (count <= gridWidth * gridWidth) {
 // run as event listeners (after the next step is set up) isn't a
 // bad idea for testing purposes.
 
+function handlePaletteClick(event) {
+  const paletteColor = event.target;
+  const color = paletteColor.classList[1];
+  currentBrushColor.className = 'current-brush ' + color; 
+}
+
+for (const brushColor of paletteColors) {
+  brushColor.addEventListener('click', handlePaletteClick);
+}
+
+function mouseSquareClick (event){
+  const clicked = event.target;
+  const color = clicked.classList[1];
+  canvas.className = 'square ' + color
+}
+
+for (const square of canvas){
+  square.addEventListener('click', mouseSquareClick)
+}
+
 
 
 /**************************
- * WIRING IT ALL TOGETHER *
+  * WIRING IT ALL TOGETHER *
 **************************/
 
 // Now: wiring up our event listeners to our html node elements.
 // You'll need to add the appropriate event listener for each
 // square and for each palette color from the functions you
 // wrote above.
+
+
