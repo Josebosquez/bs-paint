@@ -62,35 +62,38 @@ const canvas = document.querySelectorAll('.canvas');
 // run as event listeners (after the next step is set up) isn't a
 // bad idea for testing purposes.
 
-function handlePaletteClick(event) {
-  const paletteColor = event.target;
-  const color = paletteColor.classList[1];
-  currentBrushColor.className = 'current-brush ' + color; 
+// For loop going through all palette colors
+for (const paletteColor of paletteColors) {
+
+  // When the palette color is clicked, make an add event listener
+    paletteColor.addEventListener("click", function(){
+
+    // Get the current brush color class
+    const theColorOfTheBrushBefore = currentBrushColor.classList[1];
+
+    // Then the color class of the clicked palette color
+    const theColorOfTheBrushAfter = paletteColor.classList[1];
+
+    // Replace the brush's color class with the palette color class
+    currentBrushColor.classList.replace(theColorOfTheBrushBefore, theColorOfTheBrushAfter)
+})
+};
+
+for (const square of allSquares) {
+
+  // Add an event listener that does something when a square is clicked
+  square.addEventListener('click', function () {
+
+    // Get the classes of the brush in an array
+    const brushClasses = currentBrushColor.className.split(' ');
+
+    // Get the second class of the brush (the color class)
+    const brushColor = brushClasses[1];
+
+    // Set the square's class to 'square ' + color-class
+    square.className = `square ${brushColor}`;
+  });
 }
 
-for (const brushColor of paletteColors) {
-  brushColor.addEventListener('click', handlePaletteClick);
-}
-
-function mouseSquareClick (event){
-  const clicked = event.target;
-  const color = clicked.classList[1];
-  canvas.className = 'square ' + color
-}
-
-for (const square of canvas){
-  square.addEventListener('click', mouseSquareClick)
-}
-
-
-
-/**************************
-  * WIRING IT ALL TOGETHER *
-**************************/
-
-// Now: wiring up our event listeners to our html node elements.
-// You'll need to add the appropriate event listener for each
-// square and for each palette color from the functions you
-// wrote above.
 
 
